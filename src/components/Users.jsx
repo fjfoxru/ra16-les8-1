@@ -3,7 +3,7 @@ import List from './List';
 import Details from './Details';
 
 function Users () {
-    const [usersList, setUsersList] = useState([]);
+    const [usersList, setUsersList] = useState(null);
     const [selected, setSelected] = useState({});
     const [detail, setDetail] = useState({});
     const [loading, setLoading] = useState(false);
@@ -47,7 +47,7 @@ function Users () {
 
     return (
         <div>
-            <List data={usersList} onClickItem={onClickItem} />
+            {usersList && <List data={usersList} onClickItem={onClickItem} />}
             {!loading && <Details info={detail} />}
             {loading && <p>Загрузка...</p>}
         </div>
